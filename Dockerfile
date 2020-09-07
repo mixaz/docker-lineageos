@@ -1,6 +1,6 @@
 # Build environment for LineageOS
 
-FROM ubuntu:16.04
+FROM ubuntu:20.04
 MAINTAINER Michael Stucki <michael@stucki.io>
 
 
@@ -35,10 +35,10 @@ RUN sed -i 's/main$/main universe/' /etc/apt/sources.list \
       lib32readline-dev \
       lib32z1-dev \
       liblz4-tool \
+      libncurses5 \
       libncurses5-dev \
       libsdl1.2-dev \
       libssl-dev \
-      libwxgtk3.0-dev \
       libxml2 \
       libxml2-utils \
       lzop \
@@ -49,8 +49,6 @@ RUN sed -i 's/main$/main universe/' /etc/apt/sources.list \
       xsltproc \
       zip \
       zlib1g-dev \
-# Install Java Development Kit
-      openjdk-8-jdk \
 # Install additional packages which are useful for building Android
       android-tools-adb \
       android-tools-fastboot \
@@ -64,6 +62,9 @@ RUN sed -i 's/main$/main universe/' /etc/apt/sources.list \
       vim \
       wget \
  && rm -rf /var/lib/apt/lists/*
+
+# for repo
+RUN ln -s /usr/bin/python3 /usr/bin/python
 
 ARG hostuid=1000
 ARG hostgid=1000

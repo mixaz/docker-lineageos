@@ -37,8 +37,8 @@ done
 # Although Docker would create non-existing directories on the fly,
 # we need to have them owned by the user (and not root), to be able
 # to write in them, which is a necessity for startup.sh
-mkdir -p $SOURCE
-mkdir -p $CCACHE
+test -d $SOURCE || btrfs su create $SOURCE
+test -d $CCACHE || btrfs su create $CCACHE
 
 command -v docker >/dev/null \
 	|| { echo "command 'docker' not found."; exit 1; }

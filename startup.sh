@@ -11,4 +11,4 @@ fi
 export USER="$(whoami)"
 
 # Launch screen session
-/bin/bash
+screen -s /bin/bash
